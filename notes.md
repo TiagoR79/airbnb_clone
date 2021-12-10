@@ -84,3 +84,11 @@ NOTES:
 				</Link>
 			)
 		}
+
+	8. How to add local css styling
+
+			<style jsx>
+				{`
+					// add CSS code
+				`}
+			</style>

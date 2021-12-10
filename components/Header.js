@@ -24,41 +24,43 @@ export default function Header(props) {
 				</ul>
 			</nav>
 
-			<style jsx>{`
-				ul {
-					margin: 0;
-					padding: 0;
-				}
+			<style jsx>
+				{`
+					ul {
+						margin: 0;
+						padding: 0;
+					}
 
-				li {
-					display: block;
-					float: left;
-				}
+					li {
+						display: block;
+						float: left;
+					}
 
-				a {
-					text-decoration: none;
-					display: block;
-					margin-right: 15px;
-					color: #333;
-				}
+					a {
+						text-decoration: none;
+						display: block;
+						margin-right: 15px;
+						color: #333;
+					}
 
-				nav a {
-					padding: 1em 0.5em;
-				}
+					nav a {
+						padding: 1em 0.5em;
+					}
 
-				.nav-container {
-					border-bottom: 1px solid #eee;
-					height: 50px;
-				}
+					.nav-container {
+						border-bottom: 1px solid #eee;
+						height: 50px;
+					}
 
-				img {
-					float: left;
-				}
+					img {
+						float: left;
+					}
 
-				ul {
-					float: right;
-				}
-			`}</style>
+					ul {
+						float: right;
+					}
+				`}
+			</style>
 		</div>
 	)
 }
