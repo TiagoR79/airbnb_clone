@@ -1,23 +1,32 @@
+import { useState } from "react"
+
 import DayPickerInput from "react-day-picker/DayPickerInput"
-import 'react-day-picker/lib/style.css'
+import "react-day-picker/lib/style.css"
+
 import dateFnsFormat from "date-fns/format"
 import dateFnsParse from "date-fns/parse"
+
 import { DateUtils } from "react-day-picker"
-import { useState } from 'react'
+
 
 const parseDate = (str, format, locale) => {
 	const parsed = dateFnsParse(str, format, new Date(), { locale })
 	return DateUtils.isDate(parsed) ? parsed : null
 }
+
 const formatDate = (date, format, locale) => {
 	dateFnsFormat(date, format, { locale })
 }
 
-const format = 'dd MMM yyyy'
+const format = "dd MMM yyyy"
+
+const today = new Date()
+const tomorrow = new Date(today)
+tomorrow.setDate(tomorrow.getDate() + 1)
 
 export default function DateRangePicker() {
-	const [startDate, setStartDate] = useState(new Date())
-	const [endDate, setEndDate] = useState(new Date())
+	const [startDate, setStartDate] = useState(today)
+	const [endDate, setEndDate] = useState(tomorrow)
 
 	return (
 		<div className="date-range-picker-container">
@@ -26,16 +35,17 @@ export default function DateRangePicker() {
 				<DayPickerInput
 					formatDate = {formatDate}
 					format = {format}
+					value = { startDate }
 					parseDate = {parseDate}
 					placeholder = {`${dateFnsFormat(new Date(), format)}`}
 					dayPickerProps = {{
 						modifiers: {
-							disable: {
+							disabled: {
 								before: new Date()
 							}
 						}
 					}}
-					onDayChange={(day) => {
+					onDayChange={day => {
 						setStartDate(day)
 					}}
 				/>
@@ -45,16 +55,17 @@ export default function DateRangePicker() {
 				<DayPickerInput
 					formatDate = {formatDate}
 					format = {format}
+					value = { endDate }
 					parseDate = {parseDate}
 					placeholder = {`${dateFnsFormat(new Date(), format)}`}
 					dayPickerProps={{
 						modifiers: {
-							disable: {
+							disabled: {
 								before: new Date()
 							}
 						}
 					}}
-					onDayChange={(day) => {
+					onDayChange={day => {
 						setEndDate(day)
 					}}
 				/>
