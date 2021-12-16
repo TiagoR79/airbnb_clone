@@ -14,9 +14,9 @@ const parseDate = (str, format, locale) => {
 	return DateUtils.isDate(parsed) ? parsed : null
 }
 
-const formatDate = (date, format, locale) => {
+// no => {...} or Bug ... (this is the way)
+const formatDate = (date, format, locale) =>
 	dateFnsFormat(date, format, { locale })
-}
 
 const format = "dd MMM yyyy"
 
